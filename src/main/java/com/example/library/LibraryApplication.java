@@ -12,23 +12,6 @@ import java.util.Optional;
 public class LibraryApplication {
 
 	public static void main(String[] args) {
-		var app = SpringApplication.run(LibraryApplication.class, args);
-		var bookSer = app.getBean(BookService.class);
-		Book book = Book.builder()
-				.title("Just a book")
-				.year(1999)
-				.genre("РОМАН")
-				.annotation("Я не знаю что тут писать")
-				.author("Vasya")
-				.publisher("Mephi")
-				.location("2, 3")
-				.build();
-
-		bookSer.addNewBook(book);
-
-//		Book bean1 = bookSer.findBookById(900L).orElse(null);
-//		System.out.println(bean1);
-
-
+		SpringApplication.run(LibraryApplication.class, args);
 	}
 }
