@@ -25,7 +25,9 @@ public class Book {
     private String annotation;
     private String genre;
     private String location;
-    private Status status;
+    @Enumerated(EnumType.STRING)
+    @Builder.Default
+    private Status status = Status.AVAILABLE;
     @OneToOne(mappedBy = "book", cascade = CascadeType.ALL)
     private BorrowedBook borrowedBook;
 
