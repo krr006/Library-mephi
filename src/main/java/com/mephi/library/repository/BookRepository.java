@@ -1,7 +1,7 @@
-package com.example.library.repository;
+package com.mephi.library.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.example.library.entity.Book;
+import com.mephi.library.entity.Book;
 
 import java.util.Optional;
 

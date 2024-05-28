@@ -1,8 +1,8 @@
-package com.example.library.service;
+package com.mephi.library.service;
 
 
-import com.example.library.entity.BorrowedBook;
-import com.example.library.repository.BorrowedBookRepository;
+import com.mephi.library.entity.BorrowedBook;
+import com.mephi.library.repository.BorrowedBookRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

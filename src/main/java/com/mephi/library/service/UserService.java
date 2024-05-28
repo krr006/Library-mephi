@@ -1,7 +1,7 @@
-package com.example.library.service;
+package com.mephi.library.service;
 
-import com.example.library.entity.User;
-import com.example.library.repository.UserRepository;
+import com.mephi.library.entity.User;
+import com.mephi.library.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

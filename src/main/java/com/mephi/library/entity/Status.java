@@ -1,4 +1,4 @@
-package com.example.library.entity;
+package com.mephi.library.entity;
 
 public enum Status {
     AVAILABLE, BORROWED

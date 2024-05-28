@@ -1,6 +1,6 @@
-package com.example.library.repository;
+package com.mephi.library.repository;
 
-import com.example.library.entity.BorrowedBook;
+import com.mephi.library.entity.BorrowedBook;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

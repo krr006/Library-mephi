@@ -1,14 +1,14 @@
-package com.example.library.service;
+package com.mephi.library.service;
 
-import com.example.library.entity.Book;
-import com.example.library.entity.BorrowedBook;
-import com.example.library.entity.Status;
-import com.example.library.entity.User;
-import com.example.library.exception.BookNotFoundException;
-import com.example.library.exception.UserNotFoundException;
-import com.example.library.repository.BookRepository;
-import com.example.library.repository.BorrowedBookRepository;
-import com.example.library.repository.UserRepository;
+import com.mephi.library.entity.Book;
+import com.mephi.library.entity.BorrowedBook;
+import com.mephi.library.entity.Status;
+import com.mephi.library.entity.User;
+import com.mephi.library.exception.BookNotFoundException;
+import com.mephi.library.exception.UserNotFoundException;
+import com.mephi.library.repository.BookRepository;
+import com.mephi.library.repository.BorrowedBookRepository;
+import com.mephi.library.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
