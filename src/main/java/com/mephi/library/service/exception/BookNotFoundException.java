@@ -1,4 +1,4 @@
-package com.mephi.library.exception;
+package com.mephi.library.service.exception;
 
 public class BookNotFoundException extends RuntimeException{
     public BookNotFoundException(String message){
