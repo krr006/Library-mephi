@@ -10,6 +10,7 @@ import com.mephi.library.repository.BookRepository;
 import com.mephi.library.repository.BorrowedBookRepository;
 import com.mephi.library.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.dialect.function.LpadRpadPadEmulation;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -28,8 +29,14 @@ public class BookService {
     }
 
     public Book findByTitle(String title){
-        return bookRepository.findByTitle(title).orElseThrow(() -> new BookNotFoundException("The book " + title + " not found"));
+        return bookRepository.findByTitle(title).orElseThrow(BookNotFoundException::new);
     }
+
+
+    public Book findById(Long id){
+        return bookRepository.findById(id).orElseThrow(BookNotFoundException::new);
+    }
+
 
     public void updateBookById(Long id, Book updatedBook){
         bookRepository.findById(id).map(currentBook -> {
@@ -45,12 +52,10 @@ public class BookService {
 
 
 
-    public void borrowBook(String title, String username) {
-        Book book = this.findByTitle(title);
+    public void borrowBook(Long id, String username) {
+        Book book = findById(id);
 
-
-        User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new UserNotFoundException("The user " + username + " not found"));
+        User user = userRepository.findByUsername(username).orElseThrow(UserNotFoundException::new);
 
         BorrowedBook borrowedBook = new BorrowedBook();
         borrowedBook.setTitle(book.getTitle());
@@ -65,7 +70,17 @@ public class BookService {
         bookRepository.save(book);
 
     }
-    public void deleteBookByTitle(String title){bookRepository.deleteByTitle(title);}
+
+
+    public void returnBook(Long id){
+        Book book = findById(id);
+        book.setStatus(Status.AVAILABLE);
+        borrowedBookRepository.deleteByBookId(id);
+        borrowedBookRepository.flush();
+        bookRepository.save(book);
+    }
+
+    public void deleteBookById(Long id){bookRepository.deleteById(id);}
 
 
 }

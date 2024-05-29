@@ -20,6 +20,6 @@ public class BorrowedBook {
     private User user;
 
     @OneToOne
-    @JoinColumn(name = "book_id")
+    @JoinColumn(name = "book_id", referencedColumnName = "id", unique = true)
     private Book book;
 }
