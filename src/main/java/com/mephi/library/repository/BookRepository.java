@@ -1,5 +1,6 @@
 package com.mephi.library.repository;
 
+import com.mephi.library.service.exception.BookNotFoundException;
 import org.springframework.data.jpa.repository.JpaRepository;
 import com.mephi.library.entity.Book;
 

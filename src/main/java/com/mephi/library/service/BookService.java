@@ -27,8 +27,8 @@ public class BookService {
         bookRepository.save(book);
     }
 
-    public Optional<Book> findByTitle(String title){
-        return bookRepository.findByTitle(title);
+    public Book findByTitle(String title){
+        return bookRepository.findByTitle(title).orElseThrow(() -> new BookNotFoundException("The book " + title + " not found"));
     }
 
     public void updateBookById(Long id, Book updatedBook){
@@ -46,8 +46,7 @@ public class BookService {
 
 
     public void borrowBook(String title, String username) {
-        Book book = bookRepository.findByTitle(title)
-                .orElseThrow(() -> new BookNotFoundException("The book " + title + " not found"));
+        Book book = this.findByTitle(title);
 
 
         User user = userRepository.findByUsername(username)

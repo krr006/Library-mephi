@@ -1,6 +1,7 @@
 package com.mephi.library;
 import com.mephi.library.entity.Book;
 import com.mephi.library.service.BookService;
+import com.mephi.library.service.UserService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -27,8 +28,12 @@ public class LibraryApplication {
 
 //		System.out.println(book.getStatus());
 		var bookSer = app.getBean(BookService.class);
-		Book book =  bookSer.findByTitle("Tiitle").get();
+		Book book =  bookSer.findByTitle("Tiiscs");
 		System.out.println(book.getStatus());
+//		var userSer = app.getBean(UserService.class);
+//
+//
+//		bookSer.borrowBook("sdsds", "vitya");
 
 	}
 }
