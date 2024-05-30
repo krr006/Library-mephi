@@ -11,6 +11,7 @@ import com.mephi.library.repository.BorrowedBookRepository;
 import com.mephi.library.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.dialect.function.LpadRpadPadEmulation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -19,9 +20,11 @@ import java.util.Optional;
 @RequiredArgsConstructor
 
 public class BookService {
-
+    @Autowired
     private final BookRepository bookRepository;
+    @Autowired
     private final BorrowedBookRepository borrowedBookRepository;
+    @Autowired
     private final UserRepository userRepository;
 
     public void addNewBook(Book book){
