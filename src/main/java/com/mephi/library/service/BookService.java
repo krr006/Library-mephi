@@ -10,17 +10,18 @@ import com.mephi.library.repository.BookRepository;
 import com.mephi.library.repository.BorrowedBookRepository;
 import com.mephi.library.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.dialect.function.LpadRpadPadEmulation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 
 public class BookService {
-    @Autowired
+    @Autowired // Но лучше через конструктор
     private final BookRepository bookRepository;
     @Autowired
     private final BorrowedBookRepository borrowedBookRepository;
@@ -38,6 +39,10 @@ public class BookService {
 
     public Book findById(Long id){
         return bookRepository.findById(id).orElseThrow(BookNotFoundException::new);
+    }
+
+    public List<Book> findAllBooks(){
+        return bookRepository.findAll();
     }
 
 
@@ -74,12 +79,11 @@ public class BookService {
 
     }
 
-
+    @Transactional
     public void returnBook(Long id){
         Book book = findById(id);
         book.setStatus(Status.AVAILABLE);
         borrowedBookRepository.deleteByBookId(id);
-        borrowedBookRepository.flush();
         bookRepository.save(book);
     }
 
